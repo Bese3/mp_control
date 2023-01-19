@@ -3,12 +3,13 @@
 #include<string.h>
 
 
-/* This project consist of the demonstration of MiccroProgrammed
+/* This project consist of the demonstration of MicroProgrammed
  * Control in a Computer .
  * Consist of two implementation method which are
- * Vertical &
- * Horizontal
- *
+ * Vertical  Implementation &
+ * Horizontal Implementation
+ * Control Memory has the instruction for Arithmetic and
+ * Logic unit.
  */
 
 
@@ -103,17 +104,6 @@ return inst;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 void horizontal()
 {
     //allowing the user to choose the number of register
@@ -198,7 +188,7 @@ void horizontal()
     {
          printf("                 Register %x  = %x                \n" , i , Reg[i]);
          printf("    |       |        |        |        |       |      |      |    \n");
-         printf(" add(%x) sub(%x)  mul(%x)  div(%x)  mod(%x) not(%x) or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
+         printf(" add(%x)   sub(%x)   mul(%x)   div(%x)   mod(%x)  not(%x) or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
          printf("\n");
     }
     printf("\n");
