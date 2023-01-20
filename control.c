@@ -140,7 +140,7 @@ void horizontal()
         {
     for (int i = 0; i < add; i++)
         {
-    printf("Inform the Processor which kind of operation is applied in register %d\n" , i);
+    printf("Inform the Processor which kind of operation is applied in Register %d with a value %d\n" , i , Reg[i]);
     printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n 9. End\n");
     scanf("%d" ,&operation);
     if (operation < 9 && operation > 0 && operation != 6)
@@ -212,6 +212,8 @@ void horizontal()
 }
 void vertical()
 {
+    printf("\n");
+    printf("Vertical Implementation\n");
    //allowing the user to choose the number of register
     int add = 0;
    srand(time(NULL));
@@ -245,7 +247,7 @@ void vertical()
 
     for(int i = 0; i < add; i++)
         {
-     printf("Enter 3 bit number in decimal to decode in to Control Word in %d Register\n" , i );
+     printf("Enter 3 bit number in decimal to decode in to Control Word in Register %d with a value 0x%x\n" , i , Reg[i] );
     printf(" 0.add\n 1.substract\n 2.multiply\n 3.divide\n 4.modulus\n 5.Logic not\n 6.Logic or\n 7.Logic and\n 8. End\n");
     scanf("%d" ,&vertical);
     if (vertical < 8 && vertical != 5)
@@ -310,7 +312,11 @@ void vertical()
         bit8[i] = 1;
          input1 = input2 = input3 = 1;
     }
-
+    else
+        {
+      printf("Process ended\n");
+        break;
+    }
 
 
             printf("    ______________________\n");
