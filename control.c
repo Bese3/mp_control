@@ -43,7 +43,7 @@ int choice = 0;
    {
     printf("\n");
     printf(" ####################################\n");
-     printf(" #      MicroProgrammed Control    #\n ");
+     printf(" #      MicroProgrammed Control     #\n ");
       printf("####################################\n");
 
       printf("\n");
@@ -132,13 +132,20 @@ void horizontal()
     int bit6[3] = {};
     int bit7[3] = {};
     int bit8[3] = {};
+
+    do
+        {
     for (int i = 0; i < add; i++)
         {
     printf("Inform the Processor which kind of operation is applied in register %d\n" , i);
-    printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n");
+    printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n 9. End\n");
     scanf("%d" ,&operation);
+    if (operation < 9 && operation > 0)
+        {
     printf("Enter the operand\n");
     scanf("%d" , &operand);
+      }
+
     if (operation == 1)
     {
         Reg[i] = sum(Reg[i] , operand);
@@ -180,15 +187,17 @@ void horizontal()
      Reg[i] = and(Reg[i] , operand);
      bit8[i] = 1;
   }
-
-    }
+  else
+    continue;
+        }
+    }while(operation <=8);
 
 
     for(int i = 0; i < add; i++)
     {
-         printf("                 Register %x  = %x                \n" , i , Reg[i]);
-         printf("    |       |        |        |        |       |      |      |    \n");
-         printf(" add(%x)   sub(%x)   mul(%x)   div(%x)   mod(%x)  not(%x) or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
+         printf("                      Register %x  = %x (hex value)               \n" , i , Reg[i]);
+         printf("    |       |        |        |        |       |      |       |    \n");
+         printf(" add(%x)   sub(%x)   mul(%x)   div(%x)   mod(%x)  not(%x)  or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
          printf("\n");
     }
     printf("\n");
@@ -233,6 +242,8 @@ int or(int x , int y)
 {
                return x | y;
                }
+
+
 
 
 
