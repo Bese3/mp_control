@@ -15,6 +15,7 @@
 
 
 void horizontal();
+void vertical();
 
 struct c_memory
 {
@@ -55,7 +56,7 @@ int choice = 0;
       {
       case 1:
           alu();
-       // vertical();
+        vertical();
         break;
       case 2:
            alu();
@@ -207,25 +208,43 @@ void horizontal()
 
 
 }
+void vertical()
+{
+   //allowing the user to choose the number of register
+    int add = 0;
+   srand(time(NULL));
+    int random = rand() % 100;
+    int Reg[3] = {};
+    printf("Choose the Register Numbers  (i.e up to 3 is enough)\n");
+   scanf("%d" , &add);
+
+    for (int i = 0; i < add; i++)
+    {
+     Reg[i] = random % (i + 10);
+     printf("Registers with the value 0x%x is created\n" , Reg[i]);
+
+    }
+    printf("\n");
+}
 
 
 
 int sum(int x , int y)
 {
             return (x + y);
-            }
+}
 int sub(int x ,int y)
 {
     return x - y;
-    }
+}
 int mul(int x , int y)
 {
                 return x * y;
-                }
+}
 int divide(int x , int y)
 {
                  return x / y;
-                 }
+}
 int mod(int x , int y)
 {
                  return x % y;
@@ -233,7 +252,7 @@ int mod(int x , int y)
 int not(int x)
 {
          return ~x;
-         }
+}
 int and(int x , int y)
 {
                    return x & y;
@@ -241,7 +260,7 @@ int and(int x , int y)
 int or(int x , int y)
 {
                return x | y;
-               }
+}
 
 
 
