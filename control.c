@@ -140,7 +140,7 @@ void horizontal()
         {
     for (int i = 0; i < add; i++)
         {
-    printf("Inform the Processor which kind of operation is applied in Register %d with a value %d\n" , i , Reg[i]);
+    printf("Inform the Processor which kind of operation is applied in Register %d with a value 0x%x\n" , i , Reg[i]);
     printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n 9. End\n");
     scanf("%d" ,&operation);
     if (operation < 9 && operation > 0 && operation != 6)
@@ -198,7 +198,7 @@ void horizontal()
 
     for(int i = 0; i < add; i++)
     {
-         printf("                      Register %x  = %x (hex value)               \n" , i , Reg[i]);
+         printf("                      Register %x  = 0x%x (hex value)               \n" , i , Reg[i]);
          printf("    |       |        |        |        |       |      |       |    \n");
          printf(" add(%x)   sub(%x)   mul(%x)   div(%x)   mod(%x)  not(%x)  or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
          printf("\n");
@@ -329,7 +329,7 @@ void vertical()
                              printf("    |                    |_ Logic or (%d)\n" ,bit7[i]);
                                printf("    |____________________|_ Logic and (%d)\n" , bit8[i]);
                                printf("\n");
-                               printf("Register %d = %d \n" , i  ,Reg[i]);
+                               printf("Register %d = 0x%x \n" , i  ,Reg[i]);
 
 
         }
