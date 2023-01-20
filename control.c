@@ -232,21 +232,23 @@ void vertical()
 
     int vertical = 0;
     int operand = 0;
-    int bit1 = 0;
-    int bit2 = 0;
-    int bit3 = 0;
-    int bit4 = 0;
-    int bit5 = 0;
-    int bit6 = 0;
-    int bit7 = 0;
-     int bit8 = 0;
+   int bit1[3] = {};
+    int bit2[3] = {};
+    int bit3[3] = {};
+    int bit4[3] = {};
+    int bit5[3] = {};
+    int bit6[3] = {};
+    int bit7[3] = {};
+    int bit8[3] = {};
+
+     int input1,input2,input3;
 
     for(int i = 0; i < add; i++)
         {
      printf("Enter 3 bit number in decimal to decode in to Control Word in %d Register\n" , i );
     printf(" 0.add\n 1.substract\n 2.multiply\n 3.divide\n 4.modulus\n 5.Logic not\n 6.Logic or\n 7.Logic and\n 8. End\n");
     scanf("%d" ,&vertical);
-    if (vertical < 8 && vertical != 6)
+    if (vertical < 8 && vertical != 5)
         {
     printf("Enter the operand\n");
     scanf("%d" , &operand);
@@ -255,55 +257,71 @@ void vertical()
     if ((vertical | 0) == 0 )
     {
        Reg[i] = sum(Reg[i] , operand);
-       bit1 = 1;
+       bit1[i] = 1;
+       input1 = input2 = input3 = 0;
 
     }
   else if((vertical | 0b0001) == 1)
     {
         Reg[i] = sub(Reg[i] , operand);
-        bit2 = 1;
+        bit2[i] = 1;
+         input1 = input2 = 0;
+         input3 = 1;
+
     }
   else if((vertical | 0b0010) == 2)
     {
         Reg[i] = mul(Reg[i] , operand);
-        bit3 = 1;
-
+        bit3[i] = 1;
+      input1 = input3 = 0;
+      input2 = 1;
     }
   else if((vertical | 0b0011) == 3)
     {
         Reg[i] = divide(Reg[i] , operand);
-        bit4 = 1;
+        bit4[i] = 1;
+        input1 = 0;
+        input2 = input3 = 1;
     }
    else if((vertical | 0b0100) == 4)
     {
         Reg[i] = mod(Reg[i] , operand);
-        bit5 = 1;
+        bit5[i] = 1;
+         input1 = 1;
+         input2 = input3 = 0;
     }
    else  if((vertical | 0b0101) == 5)
     {
         Reg[i] = not(Reg[i]);
-        bit6 = 1;
+        bit6[i] = 1;
+         input1 = input3 = 1;
+         input2  = 0;
     }
    else if((vertical | 0b0110) == 6)
     {
         Reg[i] = or(Reg[i] , operand);
-        bit7 = 1;
+        bit7[i] = 1;
+         input1 = input2 = 1;
+         input3 = 0;
     }
   else if((vertical | 0b0111) == 7)
     {
         Reg[i] = and(Reg[i] , operand);
-        bit8 = 1;
+        bit8[i] = 1;
+         input1 = input2 = input3 = 1;
     }
 
+
+
             printf("    ______________________\n");
-               printf("   _|                    |_ add (%d)\n" , bit1);
-                  printf("    |                    |_ substract (%d)\n", bit2);
-                    printf("   _|                    |_ multiply (%d)\n" , bit3);
-                      printf("    |    3 to            |_ divide (%d)\n" ,bit4);
-                         printf("   _|       8 Decoder    |_ modulus (%d)\n" , bit5);
-                          printf("    |                    |_ Logic not (%d)\n" , bit6);
-                             printf("    |                    |_ Logic or (%d)\n" ,bit7);
-                               printf("    |____________________|_ Logic and (%d)\n" , bit8);
+               printf("  %d_|                    |_ add (%d)\n" ,input1 , bit1[i]);
+                  printf("    |                    |_ substract (%d)\n", bit2[i]);
+                    printf("  %d_|                    |_ multiply (%d)\n" , input2 , bit3[i]);
+                      printf("    |    3 to            |_ divide (%d)\n" ,bit4[i]);
+                         printf("  %d_|       8 Decoder    |_ modulus (%d)\n" , input3 , bit5[i]);
+                          printf("    |                    |_ Logic not (%d)\n" , bit6[i]);
+                             printf("    |                    |_ Logic or (%d)\n" ,bit7[i]);
+                               printf("    |____________________|_ Logic and (%d)\n" , bit8[i]);
                                printf("\n");
                                printf("Register %d = %d \n" , i  ,Reg[i]);
 
@@ -331,7 +349,7 @@ int divide(int x , int y)
 }
 int mod(int x , int y)
 {
-                 return x % y;
+                return x % y;
 }
 int not(int x)
 {
