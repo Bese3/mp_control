@@ -82,7 +82,7 @@ return (0);
 
 struct c_memory alu()
 {
-    int m_instructions[] = {000 ,001 ,010 ,011 ,100 ,101 ,110 ,111};
+    int m_instructions[] = {0b000 ,0b001 ,0b010 ,0b011 ,0b100 ,0b101 ,0b110 ,0b111};
 
 
        int select = 0;
@@ -96,7 +96,7 @@ struct c_memory alu()
        inst.memory[i] = m_instructions[i];
        inst.address[i] = &inst.memory[i];
 
-    printf("0x%x             0x%x \n" , inst.address[i] , inst.memory[i]);
+    printf("0x%x             0x%x \n" , inst.address[i] , (inst.memory[i]));
    }
 
 return inst;
@@ -107,6 +107,8 @@ return inst;
 
 void horizontal()
 {
+    printf("\n");
+    printf("Horizontal Implementation\n");
     //allowing the user to choose the number of register
     int add = 0;
    srand(time(NULL));
@@ -141,7 +143,7 @@ void horizontal()
     printf("Inform the Processor which kind of operation is applied in register %d\n" , i);
     printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n 9. End\n");
     scanf("%d" ,&operation);
-    if (operation < 9 && operation > 0)
+    if (operation < 9 && operation > 0 && operation != 6)
         {
     printf("Enter the operand\n");
     scanf("%d" , &operand);
@@ -225,6 +227,88 @@ void vertical()
 
     }
     printf("\n");
+
+    //vertically implementing
+
+    int vertical = 0;
+    int operand = 0;
+    int bit1 = 0;
+    int bit2 = 0;
+    int bit3 = 0;
+    int bit4 = 0;
+    int bit5 = 0;
+    int bit6 = 0;
+    int bit7 = 0;
+     int bit8 = 0;
+
+    for(int i = 0; i < add; i++)
+        {
+     printf("Enter 3 bit number in decimal to decode in to Control Word in %d Register\n" , i );
+    printf(" 0.add\n 1.substract\n 2.multiply\n 3.divide\n 4.modulus\n 5.Logic not\n 6.Logic or\n 7.Logic and\n 8. End\n");
+    scanf("%d" ,&vertical);
+    if (vertical < 8 && vertical != 6)
+        {
+    printf("Enter the operand\n");
+    scanf("%d" , &operand);
+      }
+
+    if ((vertical | 0) == 0 )
+    {
+       Reg[i] = sum(Reg[i] , operand);
+       bit1 = 1;
+
+    }
+  else if((vertical | 0b0001) == 1)
+    {
+        Reg[i] = sub(Reg[i] , operand);
+        bit2 = 1;
+    }
+  else if((vertical | 0b0010) == 2)
+    {
+        Reg[i] = mul(Reg[i] , operand);
+        bit3 = 1;
+
+    }
+  else if((vertical | 0b0011) == 3)
+    {
+        Reg[i] = divide(Reg[i] , operand);
+        bit4 = 1;
+    }
+   else if((vertical | 0b0100) == 4)
+    {
+        Reg[i] = mod(Reg[i] , operand);
+        bit5 = 1;
+    }
+   else  if((vertical | 0b0101) == 5)
+    {
+        Reg[i] = not(Reg[i]);
+        bit6 = 1;
+    }
+   else if((vertical | 0b0110) == 6)
+    {
+        Reg[i] = or(Reg[i] , operand);
+        bit7 = 1;
+    }
+  else if((vertical | 0b0111) == 7)
+    {
+        Reg[i] = and(Reg[i] , operand);
+        bit8 = 1;
+    }
+
+            printf("    ______________________\n");
+               printf("   _|                    |_ add (%d)\n" , bit1);
+                  printf("    |                    |_ substract (%d)\n", bit2);
+                    printf("   _|                    |_ multiply (%d)\n" , bit3);
+                      printf("    |    3 to            |_ divide (%d)\n" ,bit4);
+                         printf("   _|       8 Decoder    |_ modulus (%d)\n" , bit5);
+                          printf("    |                    |_ Logic not (%d)\n" , bit6);
+                             printf("    |                    |_ Logic or (%d)\n" ,bit7);
+                               printf("    |____________________|_ Logic and (%d)\n" , bit8);
+                               printf("\n");
+                               printf("Register %d = %d \n" , i  ,Reg[i]);
+
+
+        }
 }
 
 
@@ -251,7 +335,8 @@ int mod(int x , int y)
 }
 int not(int x)
 {
-         return ~x;
+    int a  = ~x;
+         return a;
 }
 int and(int x , int y)
 {
