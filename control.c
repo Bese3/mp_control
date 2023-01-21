@@ -11,6 +11,7 @@
  * Horizontal Implementation
  * Control Memory has the instruction for Arithmetic and
  * Logic unit.
+ * In addition we did not include the address bits in control word for simplicity
  */
 
 
@@ -304,14 +305,14 @@ void vertical()
 
 
             printf("    ______________________\n");
-               printf("  %d_|                    |_ add (%d)\n" ,input1 , bit1[i]);
-                  printf("    |                    |_ substract (%d)\n", bit2[i]);
-                    printf("  %d_|                    |_ multiply (%d)\n" , input2 , bit3[i]);
-                      printf("    |    3 to            |_ divide (%d)\n" ,bit4[i]);
-                         printf("  %d_|       8 Decoder    |_ modulus (%d)\n" , input3 , bit5[i]);
-                          printf("    |                    |_ Logic not (%d)\n" , bit6[i]);
-                             printf("    |                    |_ Logic or (%d)\n" ,bit7[i]);
-                               printf("    |____________________|_ Logic and (%d)\n" , bit8[i]);
+               printf("  %d_|                    |_ add (%d) _______________\n" ,input1 , bit1[i]);
+                  printf("    |                    |_ substract (%d)____|  R  |\n", bit2[i]);
+                    printf("  %d_|                    |_ multiply (%d)_____|     |\n" , input2 , bit3[i]);
+                      printf("    |    3 to            |_ divide (%d)_______|  E  |\n" ,bit4[i]);
+                         printf("  %d_|       8 Decoder    |_ modulus (%d)______|     |\n" , input3 , bit5[i]);
+                          printf("    |                    |_ Logic not (%d)____|  G  |\n" , bit6[i]);
+                             printf("    |                    |_ Logic or (%d)_____|     |\n" ,bit7[i]);
+                               printf("    |____________________|_ Logic and (%d)____|__%d__|\n" , bit8[i] , i);
                                printf("\n");
                                printf("Register %d = 0x%x \n" , i  ,Reg[i]);
 
