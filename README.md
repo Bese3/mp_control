@@ -2,5 +2,7 @@
 
 
   Implementing Microprogrammed Control in
-    *vertical Impelementation
-    *horizontal Implementation
+    *Vertical Impelementation
+
+
+    *Horizontal Implementation
