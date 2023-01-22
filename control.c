@@ -235,7 +235,8 @@ void vertical()
     int bit8[3] = {};
 
      int input1,input2,input3;
-
+  do
+    {
     for(int i = 0; i < add; i++)
         {
      printf("Enter 3 bit number in decimal to decode in to Control Word in Register %d with a value 0x%x\n" , i , Reg[i] );
@@ -329,8 +330,8 @@ void vertical()
 
 
         }
-}
-
+   }while(vertical != 8);
+ }
 
 
 int sum(int x , int y)
