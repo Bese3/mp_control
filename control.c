@@ -241,7 +241,7 @@ void vertical()
      printf("Enter 3 bit number in decimal to decode in to Control Word in Register %d with a value 0x%x\n" , i , Reg[i] );
     printf(" 0.add\n 1.substract\n 2.multiply\n 3.divide\n 4.modulus\n 5.Logic not\n 6.Logic or\n 7.Logic and\n 8. End\n");
     scanf("%d" ,&vertical);
-    while(select < vertical && vertical < 8)
+    while(select < vertical && vertical < 8 || (vertical | select) == 0)
     {
         printf("This function is not added in ALU enter again\n");
          scanf("%d" ,&vertical);
