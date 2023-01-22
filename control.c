@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
 #include"shell.h"
 
 
@@ -72,7 +69,7 @@ struct c_memory alu()
 
 
 
-   printf("How many ALU functions do u want ( i.e up to 8 max with 2**n)\n");
+   printf("How many ALU functions do u want ( I. up to 8 Max )\n");
    scanf("%d" , &select);
    struct c_memory inst;
    printf("     Control Memory\n");
@@ -189,7 +186,7 @@ void horizontal()
 
     for(int i = 0; i < add; i++)
     {
-         printf("                      Register %x  = 0x%x (hex value)               \n" , i , Reg[i]);
+         printf("                      Register %x  = 0x%x (Hex value)               \n" , i , Reg[i]);
          printf("    |       |        |        |        |       |      |       |    \n");
          printf(" add(%x)   sub(%x)   mul(%x)   div(%x)   mod(%x)  not(%x)  or(%x)  and(%x)    \n" , bit1[i] ,bit2[i] ,bit3[i] , bit4[i],bit5[i] ,bit6[i],bit7[i],bit8[i]);
          printf("\n");
