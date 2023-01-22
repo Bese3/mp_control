@@ -4,6 +4,7 @@
 void horizontal();
 void vertical();
 
+
 struct c_memory
 {
     int memory[32];

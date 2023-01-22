@@ -4,8 +4,8 @@
 #include"shell.h"
 
 
-/* This project consist of the demonstration of MicroProgrammed
- * Control in a Computer .
+/* This project consist of the demonstration of how MicroProgrammed
+ * Control generate a control signal in a Computer .
  * Consist of two implementation method which are
  * Vertical  Implementation &
  * Horizontal Implementation
@@ -18,6 +18,7 @@
 
 
 
+int select = 0;
 
 int main()
 {
@@ -70,7 +71,7 @@ struct c_memory alu()
     int m_instructions[] = {0b000 ,0b001 ,0b010 ,0b011 ,0b100 ,0b101 ,0b110 ,0b111};
 
 
-       int select = 0;
+
    printf("How many ALU functions do u want ( i.e up to 8 max with 2**n)\n");
    scanf("%d" , &select);
    struct c_memory inst;
@@ -128,6 +129,11 @@ void horizontal()
     printf("Inform the Processor which kind of operation is applied in Register %d with a value 0x%x\n" , i , Reg[i]);
     printf(" 1.add\n 2.substract\n 3.multiply\n 4.divide\n 5.modulus\n 6.Logic not\n 7. Logic or\n 8.Logic and\n 9. End\n");
     scanf("%d" ,&operation);
+    while(operation < 9 && select < operation)
+    {
+        printf("This function is not added in ALU enter again\n");
+         scanf("%d" ,&operation);
+    }
     if (operation < 9 && operation > 0 && operation != 6)
         {
     printf("Enter the operand\n");
@@ -178,7 +184,7 @@ void horizontal()
   else
     continue;
         }
-    }while(operation <=8);
+    }while(operation <= 8);
 
 
     for(int i = 0; i < add; i++)
@@ -235,6 +241,11 @@ void vertical()
      printf("Enter 3 bit number in decimal to decode in to Control Word in Register %d with a value 0x%x\n" , i , Reg[i] );
     printf(" 0.add\n 1.substract\n 2.multiply\n 3.divide\n 4.modulus\n 5.Logic not\n 6.Logic or\n 7.Logic and\n 8. End\n");
     scanf("%d" ,&vertical);
+    while(select < vertical && vertical < 8)
+    {
+        printf("This function is not added in ALU enter again\n");
+         scanf("%d" ,&vertical);
+    }
     if (vertical < 8 && vertical != 5)
         {
     printf("Enter the operand\n");
