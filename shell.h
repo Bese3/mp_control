@@ -20,7 +20,7 @@ int sum(int x , int y);
 int sub(int x , int y);
 int mul(int x , int y);
 int divide(int x , int y);
-int mod(int x , int y);
+int clr(int x);
 int or(int x , int y);
 int not(int x );
 int and(int x , int y);
